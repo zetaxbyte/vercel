@@ -12,7 +12,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: black; /* Background hitam */
+            background-color: black;
             overflow: hidden;
             color: white;
             font-family: Arial, sans-serif;
@@ -20,9 +20,9 @@
         }
 
         .scene {
-            width: 200px; /* Ukuran scene lebih kecil */
-            height: 200px; /* Ukuran scene lebih kecil */
-            perspective: 800px; /* Mengatur kedalaman perspektif 3D */
+            width: 200px;
+            height: 200px;
+            perspective: 800px;
         }
 
         .cube {
@@ -37,10 +37,9 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            border: 2px solid white; /* Membuat kubus berupa garis putih */
+            border: 2px solid white;
         }
 
-        /* Mengatur posisi setiap sisi kubus */
         .front  { transform: translateZ(100px); }
         .back   { transform: rotateY(180deg) translateZ(100px); }
         .left   { transform: rotateY(-90deg) translateZ(100px); }
@@ -48,29 +47,50 @@
         .top    { transform: rotateX(90deg) translateZ(100px); }
         .bottom { transform: rotateX(-90deg) translateZ(100px); }
 
-        /* Animasi untuk rotasi kubus */
         @keyframes rotate {
             0% { transform: rotateX(0deg) rotateY(0deg); }
             100% { transform: rotateX(360deg) rotateY(360deg); }
         }
 
-        /* Gaya untuk ikon media sosial */
         .social-links {
             display: flex;
             gap: 20px;
             position: absolute;
-            bottom: 80px; /* Menempatkan ikon sedikit lebih ke atas */
+            bottom: 80px;
         }
 
         .social-links a {
             color: white;
             text-decoration: none;
-            font-size: 2.5em; /* Ukuran ikon lebih besar */
+            font-size: 2.5em;
             transition: color 0.3s;
         }
 
         .social-links a:hover {
-            color: #007bff; /* Warna saat ikon di-hover */
+            color: #007bff;
+        }
+
+        /* Animasi mengetik dan berkedip */
+        .typing-text {
+            position: absolute;
+            bottom: 150px;
+            font-size: 1.5em;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 3px solid white;
+            animation: typing 3s steps(30, end), blink-caret 0.7s step-end infinite;
+        }
+
+        /* Animasi mengetik */
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        /* Animasi berkedip */
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: white; }
         }
     </style>
     <!-- Menggunakan Font Awesome untuk ikon GitHub dan Telegram -->
@@ -88,7 +108,10 @@
         </div>
     </div>
 
-    <!-- Ikon media sosial di bawah animasi, tetapi lebih ke atas -->
+    <!-- Teks dengan animasi mengetik -->
+    <div class="typing-text">Hello, I'm zetaxbyte</div>
+
+    <!-- Ikon media sosial di bawah teks -->
     <div class="social-links">
         <a href="https://github.com/zetaxbyte" target="_blank"><i class="fab fa-github"></i></a>
         <a href="https://t.me/zetaxbyte" target="_blank"><i class="fab fa-telegram"></i></a>
