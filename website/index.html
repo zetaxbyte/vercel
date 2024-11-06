@@ -1,88 +1,111 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Halaman Web dengan Logo GitHub dan Telegram</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Terminal Keren</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4;
             margin: 0;
             padding: 0;
+            background-color: #1e1e1e;
+            color: #00ff00;
+            font-family: 'Courier New', Courier, monospace;
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            text-align: center;
+            overflow: hidden;
         }
 
-        .container {
-            background-color: white;
+        #terminal {
+            width: 80%;
+            max-width: 800px;
+            height: 80%;
+            background-color: #000;
+            padding: 20px;
             border-radius: 10px;
-            padding: 40px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 300px;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
+            overflow-y: auto;
+            font-size: 16px;
         }
 
-        .container h1 {
-            margin: 0 0 20px;
-            font-size: 1.8em;
-            color: #333;
+        .command {
+            color: #00ff00;
         }
 
-        .social-links {
-            margin-top: 20px;
+        .output {
+            color: #dcdcdc;
         }
 
-        .social-links a {
-            margin: 0 15px;
-            font-size: 2.5em;
-            color: #333;
-            text-decoration: none;
-            transition: color 0.3s;
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 18px;
+            background-color: #00ff00;
+            animation: blink 1s step-end infinite;
         }
 
-        .social-links a:hover {
-            color: #2575fc;
-        }
-
-        footer {
-            position: absolute;
-            bottom: 10px;
-            font-size: 0.9em;
-            color: #888;
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                width: 250px;
-            }
-
-            .social-links a {
-                font-size: 2em;
+        @keyframes blink {
+            50% {
+                background-color: transparent;
             }
         }
     </style>
 </head>
 <body>
-
-<div class="container">
-    <h1>Ikuti Saya!</h1>
-    <div class="social-links">
-        <a href="https://github.com/zetaxbyte" target="_blank">
-            <i class="fab fa-github"></i>
-        </a>
-        <a href="https://t.me/zetaxbyte" target="_blank">
-            <i class="fab fa-telegram"></i>
-        </a>
+    <div id="terminal">
+        <div id="content"></div>
+        <div class="command-line">
+            <span class="command">user@website:~$</span> <input type="text" id="input" autofocus />
+            <span class="cursor"></span>
+        </div>
     </div>
-</div>
 
-<footer>
-    <p>&copy; 2024 Zeta | Semua hak cipta dilindungi.</p>
-</footer>
+    <script>
+        const terminal = document.getElementById('content');
+        const inputField = document.getElementById('input');
+        const cursor = document.querySelector('.cursor');
 
+        inputField.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                const command = inputField.value;
+                displayCommand(command);
+                processCommand(command);
+                inputField.value = '';
+            }
+        });
+
+        function displayCommand(command) {
+            const commandLine = document.createElement('div');
+            commandLine.classList.add('command');
+            commandLine.textContent = `user@website:~$ ${command}`;
+            terminal.appendChild(commandLine);
+        }
+
+        function processCommand(command) {
+            const outputLine = document.createElement('div');
+            outputLine.classList.add('output');
+            let output;
+
+            if (command === 'hello') {
+                output = 'Hello, user!';
+            } else if (command === 'clear') {
+                terminal.innerHTML = '';
+                return;
+            } else {
+                output = `Command not found: ${command}`;
+            }
+
+            outputLine.textContent = output;
+            terminal.appendChild(outputLine);
+            terminal.scrollTop = terminal.scrollHeight; // Scroll to the bottom
+        }
+
+        // Optional: Auto-focus the input field after a command is processed
+        setInterval(() => {
+            inputField.focus();
+        }, 100);
+    </script>
 </body>
 </html>
