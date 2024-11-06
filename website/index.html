@@ -1,13 +1,71 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Website Contoh</title>
-  <link rel="stylesheet" href="styles.css"> <!-- Tautkan styles.css -->
+  <title>Website Keren</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-  <h1>Welcome To my Website njing!</h1>
-  <p>Ini adalah halaman statis yang di-deploy menggunakan Vercel.</p>
+  <header>
+    <div class="navbar">
+      <div class="logo">
+        <h1>MyWebsite</h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section id="home" class="hero">
+    <div class="hero-text">
+      <h2>Selamat datang di Website Keren!</h2>
+      <p>Jelajahi dan temukan sesuatu yang menarik.</p>
+      <a href="#about" class="btn">Pelajari Lebih Lanjut</a>
+    </div>
+  </section>
+
+  <section id="about" class="content">
+    <h2>Tentang Kami</h2>
+    <p>Website ini dibuat dengan tujuan untuk menunjukkan desain keren dengan HTML dan CSS. Kami menyediakan
+      berbagai layanan yang bisa Anda nikmati.</p>
+  </section>
+
+  <section id="services" class="content">
+    <h2>Layanan Kami</h2>
+    <div class="services-list">
+      <div class="service">
+        <h3>Layanan 1</h3>
+        <p>Deskripsi layanan pertama kami.</p>
+      </div>
+      <div class="service">
+        <h3>Layanan 2</h3>
+        <p>Deskripsi layanan kedua kami.</p>
+      </div>
+      <div class="service">
+        <h3>Layanan 3</h3>
+        <p>Deskripsi layanan ketiga kami.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="content">
+    <h2>Kontak Kami</h2>
+    <p>Jika Anda ingin menghubungi kami, silakan klik tombol di bawah ini.</p>
+    <a href="mailto:contact@mywebsite.com" class="btn">Email Kami</a>
+  </section>
+
+  <footer>
+    <p>&copy; 2024 MyWebsite. Semua Hak Cipta Dilindungi.</p>
+  </footer>
 </body>
+
 </html>
