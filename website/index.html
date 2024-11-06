@@ -16,8 +16,8 @@
         }
 
         .scene {
-            width: 300px;
-            height: 300px;
+            width: 200px; /* Ukuran scene lebih kecil */
+            height: 200px; /* Ukuran scene lebih kecil */
             perspective: 800px; /* Mengatur kedalaman perspektif 3D */
         }
 
@@ -37,12 +37,12 @@
         }
 
         /* Mengatur posisi setiap sisi kubus */
-        .front  { transform: translateZ(150px); }
-        .back   { transform: rotateY(180deg) translateZ(150px); }
-        .left   { transform: rotateY(-90deg) translateZ(150px); }
-        .right  { transform: rotateY(90deg) translateZ(150px); }
-        .top    { transform: rotateX(90deg) translateZ(150px); }
-        .bottom { transform: rotateX(-90deg) translateZ(150px); }
+        .front  { transform: translateZ(100px); }
+        .back   { transform: rotateY(180deg) translateZ(100px); }
+        .left   { transform: rotateY(-90deg) translateZ(100px); }
+        .right  { transform: rotateY(90deg) translateZ(100px); }
+        .top    { transform: rotateX(90deg) translateZ(100px); }
+        .bottom { transform: rotateX(-90deg) translateZ(100px); }
 
         /* Animasi untuk rotasi kubus */
         @keyframes rotate {
