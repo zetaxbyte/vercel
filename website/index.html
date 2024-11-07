@@ -70,27 +70,36 @@
             color: #007bff;
         }
 
-        /* Animasi mengetik dan berkedip */
-        .typing-text {
+        /* Animasi mengetik untuk teks penuh */
+        .typing-text-full {
             position: absolute;
             bottom: 150px;
             font-size: 1.5em;
             white-space: nowrap;
             overflow: hidden;
             border-right: 3px solid white;
-            animation: typing 3s steps(30, end), blink-caret 0.7s step-end infinite;
+            animation: typingFull 4s steps(40, end) forwards;
         }
 
-        /* Animasi mengetik */
-        @keyframes typing {
+        /* Teks berkedip setelah mengetik selesai */
+        .blinking-text {
+            font-size: 1.5em;
+            position: absolute;
+            bottom: 150px;
+            display: none;
+            animation: fade-blink 1s infinite;
+        }
+
+        /* Animasi mengetik penuh */
+        @keyframes typingFull {
             from { width: 0; }
             to { width: 100%; }
         }
 
-        /* Animasi berkedip */
-        @keyframes blink-caret {
-            from, to { border-color: transparent; }
-            50% { border-color: white; }
+        /* Animasi berkedip untuk teks setelah selesai */
+        @keyframes fade-blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
         }
     </style>
     <!-- Menggunakan Font Awesome untuk ikon GitHub dan Telegram -->
@@ -108,13 +117,26 @@
         </div>
     </div>
 
-    <!-- Teks dengan animasi mengetik -->
-    <div class="typing-text">Hello, I'm zetaxbyte</div>
+    <!-- Teks animasi mengetik penuh -->
+    <div class="typing-text-full" id="typingTextFull">echo "Hello, I'm zetaxbyte"</div>
+
+    <!-- Teks berkedip tanpa "echo" -->
+    <div class="blinking-text" id="blinkingText">Hello, I'm zetaxbyte</div>
 
     <!-- Ikon media sosial di bawah teks -->
     <div class="social-links">
         <a href="https://github.com/zetaxbyte" target="_blank"><i class="fab fa-github"></i></a>
         <a href="https://t.me/zetaxbyte" target="_blank"><i class="fab fa-telegram"></i></a>
     </div>
+
+    <script>
+        // Mengganti teks menjadi berkedip setelah selesai mengetik
+        const typingTextFull = document.getElementById('typingTextFull');
+        const blinkingText = document.getElementById('blinkingText');
+        typingTextFull.addEventListener('animationend', () => {
+            typingTextFull.style.display = 'none'; // Sembunyikan teks penuh setelah mengetik selesai
+            blinkingText.style.display = 'block'; // Tampilkan teks berkedip
+        });
+    </script>
 </body>
 </html>
