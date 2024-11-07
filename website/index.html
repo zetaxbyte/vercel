@@ -77,8 +77,8 @@
             font-size: 1.5em;
             white-space: nowrap;
             overflow: hidden;
-            border-right: 3px solid white;
-            animation: typingFull 5s steps(60, end) forwards, removeCaret 0s 5s forwards;
+            border-right: 3px solid white; /* Kursor */
+            animation: typingFull 5s steps(60, end) forwards;
         }
 
         /* Teks berkedip setelah mengetik selesai */
@@ -94,11 +94,6 @@
         @keyframes typingFull {
             from { width: 0; }
             to { width: 100%; }
-        }
-
-        /* Animasi untuk menghapus kursor setelah teks selesai mengetik */
-        @keyframes removeCaret {
-            to { border-right: none; }
         }
 
         /* Animasi berkedip untuk teks setelah selesai */
@@ -125,7 +120,7 @@
     <!-- Teks animasi mengetik penuh -->
     <div class="typing-text-full" id="typingTextFull">echo "Hello, I'm zetaxbyte"</div>
 
-    <!-- Teks berkedip tanpa "echo" -->
+    <!-- Teks berkedip setelah mengetik selesai -->
     <div class="blinking-text" id="blinkingText">Hello, I'm zetaxbyte</div>
 
     <!-- Ikon media sosial di bawah teks -->
@@ -135,12 +130,13 @@
     </div>
 
     <script>
-        // Mengganti teks menjadi berkedip setelah selesai mengetik
+        // Menambahkan event listener setelah animasi mengetik selesai
         const typingTextFull = document.getElementById('typingTextFull');
         const blinkingText = document.getElementById('blinkingText');
+
         typingTextFull.addEventListener('animationend', () => {
-            typingTextFull.style.display = 'none'; // Sembunyikan teks penuh setelah mengetik selesai
-            blinkingText.style.display = 'block'; // Tampilkan teks berkedip
+            typingTextFull.style.display = 'none';  // Menyembunyikan teks yang sudah selesai diketik
+            blinkingText.style.display = 'block';  // Menampilkan teks berkedip setelah mengetik selesai
         });
     </script>
 </body>
