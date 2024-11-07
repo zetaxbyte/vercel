@@ -70,15 +70,26 @@
             color: #007bff;
         }
 
-        /* Animasi mengetik untuk teks penuh */
-        .typing-text-full {
-            position: absolute;
-            bottom: 150px;
-            font-size: 1.5em;
-            white-space: nowrap;
-            overflow: hidden;
-            border-right: 3px solid white;
-            animation: typingFull 5s steps(60, jump-none) forwards;
+	/* Animasi mengetik untuk teks penuh */
+	.typing-text-full {
+	    position: absolute;
+	    bottom: 150px;
+	    font-size: 1.5em;
+	    white-space: nowrap;
+	    overflow: hidden;
+	    border-right: 3px solid white; /* Kursor */
+	    animation: typingFull 5s steps(60, end) forwards, removeCaret 0s 5s forwards; /* Menambahkan animasi untuk menghapus kursor setelah selesai */
+	}
+
+	/* Keyframes untuk menghapus kursor setelah selesai mengetik */
+	@keyframes removeCaret {
+	    to { border-right: none; }
+	}
+
+	/* Animasi mengetik penuh */
+        @keyframes typingFull {
+            from { width: 0; }
+            to { width: 100%; }
         }
 
         /* Teks berkedip setelah mengetik selesai */
@@ -88,12 +99,6 @@
             bottom: 150px;
             display: none;
             animation: fade-blink 1s infinite;
-        }
-
-        /* Animasi mengetik penuh */
-        @keyframes typingFull {
-            from { width: 0; }
-            to { width: 100%; }
         }
 
         /* Animasi berkedip untuk teks setelah selesai */
