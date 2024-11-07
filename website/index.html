@@ -101,6 +101,11 @@
             0%, 100% { opacity: 1; }
             50% { opacity: 0; }
         }
+
+        /* Menyembunyikan kursor setelah mengetik selesai */
+        .typing-text-full.finished {
+            border-right: none; /* Hapus kursor */
+        }
     </style>
     <!-- Menggunakan Font Awesome untuk ikon GitHub dan Telegram -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -135,7 +140,7 @@
         const blinkingText = document.getElementById('blinkingText');
 
         typingTextFull.addEventListener('animationend', () => {
-            typingTextFull.style.display = 'none';  // Menyembunyikan teks yang sudah selesai diketik
+            typingTextFull.classList.add('finished'); // Menambahkan kelas untuk menyembunyikan kursor
             blinkingText.style.display = 'block';  // Menampilkan teks berkedip setelah mengetik selesai
         });
     </script>
